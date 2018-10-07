@@ -8,3 +8,6 @@ class FileBank(models.Model):
 
     def __str__(self):
         return self.file.name
+
+class Counter(models.Model):
+    count=models.PositiveSmallIntegerField(default=0)
