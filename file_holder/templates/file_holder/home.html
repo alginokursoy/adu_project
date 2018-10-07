@@ -9,25 +9,45 @@
     <title>Dr. Algın Okursoy Web Sayfası</title>
   </head>
   <body>
-    <nav class="navbar navbar-default">
+
+    <nav class="navbar navbar-default" style="background-color: #e3f2fd;">
         <div class="container-fluid">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">ADU Dr. Algın OKURSOY</a>
+            <a class="navbar-brand" href="#">Dr.Algın OKURSOY</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Ana Sayfa</a></li>
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Hakkımda</a></li>
+            <li class="active"><a href="#">Dosyalar</a></li>
+            <!--<li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>-->
+            <li><a href="https://akbis.adu.edu.tr/personelcv.asp?RegKey=A-1306">Hakkımda</a></li>
           </ul>
         </div>
       </nav>
 
-    <div class="">
-      {% for file in files %}
-        <p>Öğretim elemanı ders programı <a href="{{ file.file.url }}">    indir</a></p>
-      {% endfor %}
-    </div>
+      <div class="">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Dosya Adı</th>
+              <th scope="col">Açıklama</th>
+              <th scope="col">Boyut</th>
+              <th scope="col">Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for file in files %}
+            <tr>
+              <th scope="row">{{ file.pk}}</th>
+              <td>{{  file.file_name }}</td>
+              <td>{{  file.description }}</td>
+              <td>{{ file.file.size}}</td>
+              <td><a href="{{ file.file.url }}">indir</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
 
   </body>
 </html>
